@@ -1,0 +1,8 @@
+.icon{
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; /* Center the icon within its container */
+}
