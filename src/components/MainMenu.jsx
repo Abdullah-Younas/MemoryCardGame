@@ -45,6 +45,7 @@ const MainMenu = () => {
   const [visibility, setVisibility] = useState(Array(28).fill(false));
   const [turns, setturns] = useState(30);
   const [gameComplete, setGameComplete] = useState(false);
+  const [gameLose, setgameLose] = useState(false);
 
   useEffect(() => {
     // When selected cards change, check if they match
@@ -79,6 +80,8 @@ const MainMenu = () => {
     // Check if the game is complete
     if (visibility.every(visible => visible)) {
       setGameComplete(true);
+    } else if(!turns > 0){
+      setgameLose(true);
     }
   }, [selectedcard, cardvalue]);
 
@@ -140,6 +143,10 @@ const MainMenu = () => {
         <h2 className='counter'>MOVES REMAINING: {turns}</h2>
         {gameComplete && <div className='gamecomplete'>
           <h1>Congratulations! You have solved the game!</h1>
+          <button onClick={refreshPage}>Return</button>
+        </div>}
+        {gameLose && <div className='gamecomplete'>
+          <h1>Congratulations! You have lost the game!</h1>
           <button onClick={refreshPage}>Return</button>
         </div>}
       </div>
